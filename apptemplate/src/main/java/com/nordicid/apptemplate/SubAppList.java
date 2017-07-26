@@ -22,7 +22,7 @@ import android.widget.TextView;
  * Builds and manages the menu.
  */
 public class SubAppList extends Fragment implements AdapterView.OnItemClickListener {
-	public static final String TAG = "SubAppList";
+	public static final String TAG = SubAppList.class.getSimpleName();
 	private ArrayList<SubApp> mSubApps = new ArrayList<SubApp>();
 	private GridView mGridView;
 	private AppTemplate appTemplate;

@@ -37,15 +37,16 @@ public class InventoryAppTabbed extends SubAppTabbed {
 
 	public static final String TAG = InventoryAppTabbed.class.getSimpleName();
 
+
 	private static InventoryAppTabbed gInstance = null;
 	public static InventoryAppTabbed getInstance()
 	{
 		return gInstance;
 	}
-	
+
 	public InventoryController getInventoryController()
 	{		
-		return mInventoryController;	
+		return mInventoryController;
 	}
 
 	@Override
@@ -56,11 +57,13 @@ public class InventoryAppTabbed extends SubAppTabbed {
 	
 	public InventoryAppTabbed() {
 		super();
+
+		/*This is init for InventoryController*/
+
 		gInstance = this;
 		mHandler = new Handler(Looper.getMainLooper());
 		mInventoryController = new InventoryController(getNurApi());
 		Log.d(TAG,"Running at here : ");
-
 	}
 
 	@Override
@@ -113,7 +116,7 @@ public class InventoryAppTabbed extends SubAppTabbed {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		mView = view;
-		
+		mInventoryController.setRealmInstance(getActivity().getApplication());
 		mInventoryController.setListener(new InventoryControllerListener() {
 
 			@SuppressWarnings("unchecked")

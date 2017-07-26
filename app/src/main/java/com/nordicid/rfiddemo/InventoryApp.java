@@ -60,7 +60,8 @@ public class InventoryApp extends SubApp {
 	public int getTileIcon() {
 		return R.drawable.ic_inventory;
 	}
-	
+
+
 	@Override
 	public String getAppName() {
 		return "Inventory";

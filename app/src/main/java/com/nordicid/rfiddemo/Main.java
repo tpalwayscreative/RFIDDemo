@@ -161,6 +161,8 @@ public class Main extends AppTemplate {
 
         /* The first running on InventoryAppTabbed -> InventoryAppReadingTab  */
 
+        /*InventoryController work together with some of class above*/
+
         return gInstance;
     }
 

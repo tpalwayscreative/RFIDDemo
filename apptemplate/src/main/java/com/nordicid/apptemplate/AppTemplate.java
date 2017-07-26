@@ -112,14 +112,14 @@ public class AppTemplate extends FragmentActivity {
 	
 	/* Which sub-application is listening. */
 	private NurApiListener mAppListener = null;	
-	private NurApiListener mCurrentListener = null;	
+	private NurApiListener mCurrentListener = null;
 	private NurApiListener mNurApiListener = new NurApiListener() {		
 		@Override
 		public void triggeredReadEvent(NurEventTriggeredRead event) { }
 		@Override
 		public void traceTagEvent(NurEventTraceTag event) {
 			if (mCurrentListener != null)
-				mCurrentListener.traceTagEvent(event);					
+				mCurrentListener.traceTagEvent(event);
 		}
 		@Override
 		public void programmingProgressEvent(NurEventProgrammingProgress event) {

@@ -1,6 +1,8 @@
 package com.nordicid.controllers;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nordicid.apptemplate.AppTemplate;
+import com.nordicid.common.realm.RFIDProtocol;
+import com.nordicid.common.realm.RealmController;
 import com.nordicid.nurapi.NurApi;
 import com.nordicid.nurapi.NurApiErrors;
 import com.nordicid.nurapi.NurApiException;
@@ -147,6 +151,7 @@ public class InventoryController {
 	private Stats mStats = new Stats();
 	private Thread mBeeperThread = null;
 	private NurTagStorage mTagStorage = new NurTagStorage();
+	private RealmController realmController ;
 
 	private ArrayList<HashMap<String, String>> mListViewAdapterData = new ArrayList<HashMap<String,String>>();
 
@@ -249,6 +254,14 @@ public class InventoryController {
 
 				NurTag tag = tagStorage.get(i);
 
+				if (realmController.getEPCSpecific(tag.getEpcString())==null){
+					RFIDProtocol protocol = new RFIDProtocol();
+					protocol.setEpc(tag.getEpcString());
+					protocol.setValue(Integer.toString(tag.getRssi()));
+					protocol.getDateTime(dateFormatter.format(new Date()));
+					realmController.mInsetEPC(protocol);
+				}
+
 				if (mTagStorage.addTag(tag))
 				{
 					tmp = new HashMap<String, String>();
@@ -263,7 +276,6 @@ public class InventoryController {
 					tmp.put("lastseentime", dateFormatter.format(new Date()));
 					tag.setUserdata(tmp);
 					mListViewAdapterData.add(tmp);
-
 					if (mInventoryListener != null)
 						mInventoryListener.tagFound(tag, true);
 				}
@@ -392,6 +404,11 @@ public class InventoryController {
 		if (mInventoryListener != null)
 			mInventoryListener.inventoryStateChanged();
 	}
+
+	public void setRealmInstance(Application application){
+		realmController = RealmController.with(application);
+	}
+
 
 	public void setListener(InventoryControllerListener l) {
 		mInventoryListener = l;

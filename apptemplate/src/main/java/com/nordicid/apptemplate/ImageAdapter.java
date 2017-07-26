@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 public class ImageAdapter extends BaseAdapter {
     private SubAppList list;
+    public static final String TAG = ImageAdapter.class.getSimpleName();
 
     public ImageAdapter(SubAppList list) {
         this.list = list;
@@ -45,7 +47,7 @@ public class ImageAdapter extends BaseAdapter {
     	View gridItem;
     	int orientation = list.getResources().getConfiguration().orientation;
     	//int currentOpenSubAppIndex = list.getCurrentOpenSubAppIndex();
-        
+
         if (convertView == null) {
         	gridItem = LayoutInflater.from(list.getContext()).inflate(R.layout.subapplist_item, null);
         } 
