@@ -47,7 +47,6 @@ public class RealmController {
     }
 
     public Realm getRealm() {
-
         return realm;
     }
 
@@ -65,10 +64,6 @@ public class RealmController {
 
     //find all objects in the RFIDProtocol.class
     public RealmResults<RFIDProtocol> getEPCList() {
-        if (realm != null)
-        {
-            Log.d("action","This action is existing");
-        }
         return realm.where(RFIDProtocol.class).findAll();
     }
 
