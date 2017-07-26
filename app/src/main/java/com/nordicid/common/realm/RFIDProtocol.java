@@ -13,7 +13,8 @@ public class RFIDProtocol extends RealmObject {
     @PrimaryKey
     private String epc ;
     private String value ;
-    private String dateTime ;
+    private String mTimeNow ;
+
 
     public String getEpc(){
         return epc ;
@@ -30,12 +31,12 @@ public class RFIDProtocol extends RealmObject {
         this.value = value;
     }
 
-    public void setDateTime(String dateTime){
-        this.dateTime = dateTime ;
+    public void setMTimeNow(String mTimeNow){
+        this.mTimeNow = mTimeNow ;
     }
 
-    public String getDateTime(String dateTime){
-        return dateTime ;
+    public String getMTimeNow(){
+        return mTimeNow ;
     }
 
 

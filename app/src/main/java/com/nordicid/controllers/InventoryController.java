@@ -258,7 +258,7 @@ public class InventoryController {
 					RFIDProtocol protocol = new RFIDProtocol();
 					protocol.setEpc(tag.getEpcString());
 					protocol.setValue(Integer.toString(tag.getRssi()));
-					protocol.getDateTime(dateFormatter.format(new Date()));
+					protocol.setMTimeNow(dateFormatter.format(new Date()));
 					realmController.mInsetEPC(protocol);
 				}
 
