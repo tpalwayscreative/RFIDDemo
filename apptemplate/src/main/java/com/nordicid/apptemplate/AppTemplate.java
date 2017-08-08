@@ -322,6 +322,8 @@ public class AppTemplate extends FragmentActivity {
 				onConfigurationChanged(getResources().getConfiguration());	
 			}
 		}
+
+
 	}
 
 	@Override
@@ -598,6 +600,7 @@ public class AppTemplate extends FragmentActivity {
 	 *  Used internally to open some SubApp
 	 */
 	private void openSubApp(SubApp app) {
+		Log.d(TAG,"open sub app");
 		if (app == null)
 		{
 			// Go back to main menu
@@ -754,6 +757,9 @@ public class AppTemplate extends FragmentActivity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
+		mDrawerToggle.setDrawerIndicatorEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(false);
+
 
 	}
 	
